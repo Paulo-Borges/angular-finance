@@ -1,15 +1,22 @@
 <section class="bg-white m-4 rounded p-2">
     <label for="stock-select" class="font-bold">Selecione a Ação</label>
     <div class="flex gap-4">
-      <select name="acao" id="stock-select" class="border border-zinc-300 w-[130px]">
-        <option value="PETR4">PETR4</option>
+      <select name="acao" id="stock-select" class="border border-zinc-300 w-[250px]" [(ngModel)]="selectedStock"> //tem que importar FormsModel
+      <option value="" disabled>Selecione uma Ação</option>
+        @for(stock of stocks; track stock.name) {
+        <option value="{{ stock.symbol }}">{{ stock.name }}</option>
+       }
+       
+        <!-- <option value="PETR4">PETR4</option>
         <option value="VALE3">VALE3</option>
-        <option value="ITUB4">ITUB4</option>
+        <option value="ITUB4">ITUB4</option> -->
       </select>
-      <button (click)="fetchStockData()" class=" bg-blue-500 text-white py-1 px-3 rounded">Exibir</button>
+      <button (click)="fetchStockData()" [disabled]="!selectedStock()" class=" bg-blue-500 text-white py-1 px-3 rounded">Exibir</button>
     </div>
   </section>
   <section class="bg-white m-4 rounded p-2 pt-2">
-    <h2 class="font-bold mb-4">Dados da Ação: PETR4</h2>
+    <h2 class="font-bold mb-4">Dados da Ação: {{ selectedStock() }}</h2>
     <p class="text-zinc-500 mb-4">Gráfico com Valores</p>
+
+    <app-stock-chart [stockData]="stockData()"></app-stock-chart>
   </section>
