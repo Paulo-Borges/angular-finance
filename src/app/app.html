@@ -1,25 +1,12 @@
 <app-header></app-header>
 <main>
+  <app-about></app-about>
+ 
   <section>
-    <label for="stock-select">Selecione a Ação</label>
-    <div>
-      <select name="acao" id="stock-select">
-        <option value="PETR4">PETR4</option>
-        <option value="VALE3">VALE3</option>
-        <option value="ITUB4">ITUB4</option>
-      </select>
-      <button (click)="fetchStockData()">Exibir</button>
-    </div>
-  </section>
-  <section>
-    <h2>Dados da Ação: PETR4</h2>
-    <p>Gráfico com Valores</p>
-  </section>
-  <section>
-    <p>Mensagem de erro!</p>
+    <p class="text-red-900 p-8">Mensagem de erro!</p>
   </section>
 
-  <footer>
+  <footer class="flex items-center justify-center bg-blue-500 text-white text-xs p-3 ">
     <p>Desenvolvido por Borges 2026</p>
   </footer>
 </main>
