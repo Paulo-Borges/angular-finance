@@ -12,8 +12,9 @@ export class About {
   constructor(private financeService: FinanceService) {}
 
   fetchStockData() {
-    this.financeService.getStockData('IBM').then(data => {
-      // console.log('Stock data:', data);
+    this.financeService.getStockData('IBM').subscribe({
+      next: data => console.log('Stock data:', data),
+      error: error => console.error('Error fetching staock data:', error)
     });
   }
 }
